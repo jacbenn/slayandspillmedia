@@ -155,7 +155,6 @@
   }
 
   .tile--spill img { padding: clamp(6px, 2.2svh, 22px) 0; }
-  .tile--slay img { flex: 1 1 0; height: 0; min-height: 0; aspect-ratio: auto; }
   .tile--spill .tile__label { text-transform: uppercase; letter-spacing: .4em; padding-left: .4em; }
   .tile--spill { border-color: var(--amber); box-shadow: 0 0 28px rgba(200, 130, 10, 0.3); }
   .tile--spill:hover { box-shadow: 0 0 44px rgba(232, 160, 32, 0.55); }
@@ -186,8 +185,7 @@
     .title { margin-top: clamp(1rem, 3.5svh, 2rem); }
     .hero { padding-bottom: clamp(.75rem, 3svh, 2rem); }
     .sites { grid-template-columns: var(--tile-w); gap: 0.7rem; }
-    .tile img { aspect-ratio: 3.6 / 1; }
-    .tile--slay img { flex: none; height: auto; aspect-ratio: 2.9 / 1; }
+    .tile img { aspect-ratio: 2.4 / 1; }
     .tile__label small { font-size: clamp(.68rem, 1.6svh, .8rem); }
     .tile__label { padding: .35rem .4rem; }
     .extras { gap: .5rem .6rem; }
@@ -225,13 +223,12 @@
 
     <div class="sites">
       <a class="tile tile--slay" href="https://bettyandbonnybookslayers.com">
-        <img src="assets/book-slayers-podcast-wide.jpg" width="800" height="640"
-             alt="Book Slayers podcast: a vintage microphone inside a glowing pink ring above the words Book Slayers">
+        <img src="assets/book-slayers-clean.jpg" width="800" height="592"
+             alt="Book Slayers: a vintage microphone inside a glowing pink ring above the words Book Slayers">
       </a>
       <a class="tile tile--spill" href="https://spillthebook.com">
         <img src="assets/spill-the-book-black.jpg" width="900" height="719"
              alt="Spill The Book: a teacup pouring coffee over an open book">
-        <span class="tile__label">Podcast</span>
       </a>
     </div>
   </section>
