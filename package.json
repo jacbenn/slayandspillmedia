@@ -1,0 +1,9 @@
+{
+  "name": "slayandspillmedia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Slay & Spill Media: Book Slayers and Spill The Book",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

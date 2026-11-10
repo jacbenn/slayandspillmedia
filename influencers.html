@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Influencer Sign-Up | Slay and Spill the Book Media</title>
+<meta name="description" content="Bookstagrammers, BookTokers and bloggers: join the Book Slayers and Spill The Book communities with one sign-up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#000; --dark-purple:#120018; --neon-pink:#ff2fa3; --neon-purple:#9d4edd;
+    --amber:#c8820a; --amber-light:#e8a020; --brown-dark:#4a2a0e;
+    --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--black);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:720px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+  .back{display:inline-block;margin-bottom:1rem;color:#c9b8d8;text-decoration:none;font-size:.95rem}
+  .back:hover{color:#fff}
+  h1{margin:0 0 .5rem;text-align:center;font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,3.2rem);letter-spacing:.08em;line-height:1.05;
+    background:linear-gradient(90deg,var(--neon-pink) 0%,var(--neon-purple) 40%,var(--amber-light) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 12px rgba(157,78,221,.5))}
+  .intro{text-align:center;color:#d9cfe3;margin:0 auto 2rem;max-width:34rem}
+  form{display:grid;gap:1rem}
+  .rule{display:flex;align-items:center;gap:.75rem;margin:.75rem 0 0;font-family:var(--display);font-size:1.4rem;letter-spacing:.1em;color:var(--neon-pink)}
+  .rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--neon-purple),var(--amber))}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  input[type=text],input[type=email],input[type=number],select,textarea{width:100%;padding:.8rem .9rem;border-radius:10px;border:1px solid #3a2a4a;background:var(--dark-purple);color:#fff;font:inherit}
+  textarea{min-height:6rem;resize:vertical}
+  select:invalid{color:#9a8aa8}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--neon-purple);outline-offset:1px}
+  fieldset{margin:0;padding:0;border:0}
+  legend{padding:0;margin-bottom:.5rem;font-weight:600}
+  .opts{display:flex;flex-wrap:wrap;gap:.5rem}
+  .opts label{display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;border:1px solid #3a2a4a;border-radius:999px;background:var(--dark-purple);cursor:pointer;font-size:.95rem}
+  .opts label:has(input:checked){border-color:var(--neon-pink);background:#2a0a24}
+  .sides{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+  @media(max-width:560px){.sides{grid-template-columns:1fr}}
+  .sides label{display:block;padding:.8rem;border:2px solid #3a2a4a;border-radius:12px;cursor:pointer;text-align:center;background:var(--dark-purple)}
+  .sides label b{display:block;font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.08em}
+  .sides label span{font-size:.85rem;color:#c9b8d8}
+  .sides input{position:absolute;opacity:0;pointer-events:none}
+  .sides label:has(input:checked){border-color:var(--neon-pink);box-shadow:0 0 18px rgba(255,47,163,.35)}
+  .sides .light:has(input:checked){border-color:var(--amber-light);box-shadow:0 0 18px rgba(232,160,32,.35)}
+  .sides label:has(input:focus-visible){outline:3px solid #ffdd00;outline-offset:2px}
+  .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+  button{margin-top:.5rem;padding:1rem;border:0;border-radius:12px;cursor:pointer;font-family:var(--display);font-size:1.5rem;letter-spacing:.1em;color:#fff;background:linear-gradient(90deg,var(--neon-pink),var(--neon-purple) 55%,var(--amber))}
+  button:disabled{opacity:.6;cursor:wait}
+  .msg{margin:0;padding:.8rem 1rem;border-radius:10px}
+  .msg.err{background:#3a0a1a;border:1px solid #ff4d6d}
+  .done{display:none;text-align:center;padding:2.5rem 1rem;border:1px solid var(--neon-purple);border-radius:14px;background:var(--dark-purple);box-shadow:0 0 28px rgba(157,78,221,.3)}
+  .done h2{margin:0 0 .5rem;font-family:var(--display);font-weight:400;font-size:2rem;letter-spacing:.08em;color:var(--neon-pink)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">&larr; Back</a>
+  <h1>Influencer Sign-Up</h1>
+  <p class="intro">Bookstagrammer, BookToker, BookTuber or blogger? Sign up once and tell us whether you're dark side, light side, or both. We'll match you to Book Slayers and Spill The Book.</p>
+
+  <form id="form" novalidate>
+    <p class="rule">The basics</p>
+    <div class="row">
+      <input type="text" name="fullName" placeholder="Full name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Email address" required autocomplete="email">
+    </div>
+    <div class="row">
+      <input type="text" name="handle" placeholder="Main handle (e.g. @bookslayer)" required>
+      <select name="platform" required>
+        <option value="" selected disabled>Main platform</option>
+        <option>Bookstagram</option><option>BookTok</option><option>BookTube</option><option>Blog</option><option>Other</option>
+      </select>
+    </div>
+    <div class="row">
+      <input type="number" name="followerCount" placeholder="Follower count" min="0" required inputmode="numeric">
+      <input type="text" name="otherHandles" placeholder="Other platforms / handles (optional)">
+    </div>
+
+    <p class="rule">Your side</p>
+    <fieldset>
+      <legend class="sr" style="position:absolute;left:-9999px">Which side are you?</legend>
+      <div class="sides">
+        <label><input type="radio" name="side" value="Dark side (Book Slayers)" required><b style="color:var(--neon-pink)">Dark side</b><span>Thrillers &amp; dark reads</span></label>
+        <label class="light"><input type="radio" name="side" value="Light side (Spill The Book)"><b style="color:var(--amber-light)">Light side</b><span>Fantasy &amp; romance</span></label>
+        <label><input type="radio" name="side" value="Both sides"><b style="background:linear-gradient(90deg,var(--neon-pink),var(--amber-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Both!</b><span>Bring on everything</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Genres you love</legend>
+      <div class="opts">
+        <label><input type="checkbox" name="genres" value="Thriller"> Thriller</label>
+        <label><input type="checkbox" name="genres" value="Dark Romance"> Dark Romance</label>
+        <label><input type="checkbox" name="genres" value="Horror"> Horror</label>
+        <label><input type="checkbox" name="genres" value="Fantasy"> Fantasy</label>
+        <label><input type="checkbox" name="genres" value="Romance"> Romance</label>
+        <label><input type="checkbox" name="genres" value="Other"> Other</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Interested in</legend>
+      <div class="opts">
+        <label><input type="checkbox" name="interestedIn" value="Promo Tours"> Promo Tours</label>
+        <label><input type="checkbox" name="interestedIn" value="Cover Reveals"> Cover Reveals</label>
+        <label><input type="checkbox" name="interestedIn" value="ARC Teams"> ARC Teams</label>
+        <label><input type="checkbox" name="interestedIn" value="Street Teams"> Street Teams</label>
+        <label><input type="checkbox" name="interestedIn" value="Author Interviews"> Author Interviews</label>
+        <label><input type="checkbox" name="interestedIn" value="Read Alongs"> Read Alongs</label>
+      </div>
+    </fieldset>
+    <textarea name="message" placeholder="Anything else we should know? (optional)"></textarea>
+
+    <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <p class="msg err" id="err" role="alert" hidden></p>
+    <button type="submit" id="go">Sign me up</button>
+  </form>
+
+  <div class="done" id="done" role="status">
+    <h2>You're in!</h2>
+    <p>Thanks, we'll be in touch soon.</p>
+  </div>
+</main>
+<script>
+  const form = document.getElementById('form'), err = document.getElementById('err'), go = document.getElementById('go'), done = document.getElementById('done');
+  const loadedAt = Date.now();
+  function show(m){ err.textContent = m; err.hidden = false; err.scrollIntoView({block:'center'}); }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); err.hidden = true;
+    const fd = new FormData(form);
+    if (!form.checkValidity() || !fd.getAll('genres').length || !fd.getAll('interestedIn').length) {
+      return show('Please fill in every required box and pick at least one genre and one thing you are interested in.');
+    }
+    const body = Object.fromEntries(fd.entries());
+    body.genres = fd.getAll('genres'); body.interestedIn = fd.getAll('interestedIn'); body.formLoadedAt = loadedAt;
+    go.disabled = true; go.textContent = 'Sending...';
+    try {
+      const r = await fetch('/api/influencer', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.success) { form.hidden = true; done.style.display = 'block'; done.scrollIntoView({block:'center'}); return; }
+      show(j.error || 'Something went wrong. Please try again.');
+    } catch { show('Could not send. Check your connection and try again.'); }
+    go.disabled = false; go.textContent = 'Sign me up';
+  });
+</script>
+</body>
+</html>

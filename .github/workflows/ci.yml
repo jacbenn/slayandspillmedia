@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+
+      - name: Check server and sign-up code
+        run: |
+          node --check server.js
+          node --check api/influencer.js
+
+      - name: Check every image the pages use exists
+        run: |
+          for f in index.html influencers.html; do
+            for img in $(grep -oE 'assets/[A-Za-z0-9._-]+' "$f" | sort -u); do
+              test -f "$img" || { echo "Missing: $img (used in $f)"; exit 1; }
+            done
+          done

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slay and Spill the Book Media</title>
+<meta name="description" content="Slay and Spill the Book Media is home to two sister book podcasts, Book Slayers and Spill The Book, plus virtual book tours and a community of book reviewers.">
+<meta property="og:title" content="Slay and Spill the Book Media">
+<meta property="og:description" content="Two sister book podcasts, virtual book tours and reviewer communities.">
+<meta property="og:image" content="assets/slay-and-spill-logo-wide.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* Colours and fonts taken from the two real sites */
+  :root {
+    --black: #000;
+    --dark-purple: #120018;
+    --neon-pink: #ff2fa3;
+    --neon-purple: #9d4edd;
+    --amber: #c8820a;
+    --amber-light: #e8a020;
+    --brown-dark: #4a2a0e;
+
+    --display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+    /* Sizes follow the height of the screen so everything fits on one page */
+    --gap: clamp(0.6rem, 2svh, 1.25rem);
+    --space: clamp(1.25rem, 5svh, 3.5rem);
+    --logo: min(clamp(7rem, 32svh, 460px), calc((100vw - 2.5rem) / 1.2));
+    /* Height of the two wide buttons (never so tall that the picture crowds out the label) */
+    --tile-w: min(calc(clamp(90px, 28svh, 300px) * 2.4), calc((100vw - 2.5rem - clamp(1.5rem, 6vw, 5rem)) / 2));
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, p { margin: 0; }
+  img { display: block; }
+
+  .page { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+
+  /* ---------- Title, pinned to the top ---------- */
+  .title {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: clamp(1rem, 5svh, 3rem) auto 0;
+    padding: 0 1.25rem;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, min(6svh, 7vw), 3rem);
+    line-height: 1.02;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--neon-pink);
+    background: linear-gradient(90deg, var(--neon-pink) 0%, var(--neon-purple) 35%, var(--amber-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 12px rgba(157, 78, 221, 0.5));
+  }
+
+  /* ---------- Logo in the middle, two wide buttons along the bottom ---------- */
+  .sub { margin: .35rem auto 0; padding: 0 1.25rem; text-align: center; font-size: clamp(.9rem, 2.2svh, 1.2rem); letter-spacing: .12em; text-transform: uppercase; color: #d9cfe3; }
+
+  .footer { margin-top: auto; padding: .8rem 1.25rem; text-align: center; font-size: .8rem; color: #9a8aa8; border-top: 1px solid rgba(157,78,221,.35); }
+
+  .hero {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space);
+    padding: 0.5rem 1.25rem clamp(2rem, 8svh, 6rem);
+  }
+  .brand {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    max-width: 100%;
+  }
+  .hero__logo {
+    width: auto;
+    height: var(--logo);
+    max-width: 100%;
+    aspect-ratio: 1200 / 1000;
+    object-fit: contain;
+  }
+
+  .sites {
+    display: grid;
+    grid-template-columns: repeat(2, var(--tile-w));
+    column-gap: clamp(1.5rem, 6vw, 5rem);
+    row-gap: clamp(0.6rem, 2svh, 1.2rem);
+    justify-content: center;
+  }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    width: var(--tile-w);
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 14px;
+    background: var(--black);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .tile:hover { transform: translateY(-3px); }
+  .tile:focus-visible { outline: 3px solid #ffdd00; outline-offset: 3px; }
+  .tile img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2.4 / 1;
+    object-fit: contain;
+    background: var(--black);
+  }
+  .tile__label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.4rem;
+    text-align: center;
+    line-height: 1.05;
+  }
+
+  .tile__label small { display:block; margin-top:.25em; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-weight:400; font-size:clamp(.7rem,1.7svh,.9rem); letter-spacing:.02em; opacity:.8; }
+
+  .extras { grid-column:1 / -1; display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem 1.25rem; margin-top:clamp(.8rem,2.5svh,1.5rem); }
+  .influencers { display:block; width:fit-content; max-width:100%; margin:0; padding:.7rem 1.6rem; border-radius:999px; border:2px solid transparent;
+    background: linear-gradient(var(--black),var(--black)) padding-box, linear-gradient(90deg,var(--neon-pink),var(--neon-purple) 50%,var(--amber-light)) border-box;
+    font-family:var(--display); font-size:clamp(1rem,2.6svh,1.4rem); letter-spacing:.1em; text-align:center; text-decoration:none; color:#fff; transition:box-shadow .25s ease; }
+  .influencers:hover { box-shadow:0 0 26px rgba(255,47,163,.45); }
+  .influencers:focus-visible { outline:3px solid #ffdd00; outline-offset:3px; }
+
+  .tile--slay { border-color: var(--neon-purple); box-shadow: 0 0 28px rgba(157, 78, 221, 0.3); }
+  .tile--slay:hover { box-shadow: 0 0 44px rgba(255, 47, 163, 0.55); }
+  .tile--slay .tile__label {
+    background: var(--dark-purple);
+    font-family: var(--display);
+    font-size: clamp(1rem, 2.9svh, 1.6rem);
+    letter-spacing: 0.08em;
+    color: var(--neon-pink);
+  }
+
+  .tile--spill img { padding: clamp(6px, 2.2svh, 22px) 0; }
+  .tile--slay img { flex: 1 1 0; height: 0; min-height: 0; aspect-ratio: auto; }
+  .tile--spill .tile__label { text-transform: uppercase; letter-spacing: .4em; padding-left: .4em; }
+  .tile--spill { border-color: var(--amber); box-shadow: 0 0 28px rgba(200, 130, 10, 0.3); }
+  .tile--spill:hover { box-shadow: 0 0 44px rgba(232, 160, 32, 0.55); }
+  .tile--spill:focus-visible { outline-color: var(--amber-light); }
+  .tile--spill .tile__label {
+    background: var(--brown-dark);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(0.9rem, 2.5svh, 1.4rem);
+    color: var(--amber-light);
+  }
+
+  /* Tablets and phones: the two buttons stack, each one running the full width */
+  @media (max-width: 1000px) {
+    :root { --tile-w: min(calc((100vw - 2.5rem - clamp(1.5rem, 6vw, 5rem)) / 2), calc(22svh * 2.4)); }
+    .tile--slay .tile__label { font-size: clamp(0.95rem, 2.4svh, 1.3rem); }
+    .tile--spill .tile__label { font-size: clamp(0.85rem, 2.1svh, 1.15rem); }
+  }
+
+  /* Short, wide screens (a phone held sideways): logo on the left, buttons stacked on the right */
+  @media (max-height: 700px) and (min-width: 601px) {
+    :root { --logo: min(26svh, 300px); }
+    .hero { padding-bottom: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    :root { --tile-w: calc(100vw - 2.5rem); --logo: min(21svh, calc((100vw - 2.5rem) / 1.2)); --space: clamp(.6rem, 2.5svh, 1.5rem); }
+    .title { margin-top: clamp(1rem, 3.5svh, 2rem); }
+    .hero { padding-bottom: clamp(.75rem, 3svh, 2rem); }
+    .sites { grid-template-columns: var(--tile-w); gap: 0.7rem; }
+    .tile img { aspect-ratio: 3.6 / 1; }
+    .tile--slay img { flex: none; height: auto; aspect-ratio: 2.9 / 1; }
+    .tile__label small { font-size: clamp(.68rem, 1.6svh, .8rem); }
+    .tile__label { padding: .35rem .4rem; }
+    .extras { gap: .5rem .6rem; }
+    .influencers { font-size: .95rem; padding: .55rem .9rem; letter-spacing: .05em; }
+    .tile--spill img { padding: 4px 0; }
+    .tile--slay .tile__label, .tile--spill .tile__label { font-size: clamp(1rem, 2.4svh, 1.25rem); }
+  }
+
+  @media (max-height: 520px) and (min-aspect-ratio: 3/2) {
+    :root { --tile-w: min(40svh, 220px); }
+    .hero { flex-direction: row; align-items: center; gap: 2rem; }
+    .brand { flex: none; }
+    .hero__logo { height: min(54svh, 300px); }
+    .sites { flex: none; }
+    .tile--slay .tile__label { font-size: clamp(1.1rem, 4.6svh, 1.6rem); }
+    .tile--spill .tile__label { font-size: clamp(0.95rem, 3.8svh, 1.3rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile { transition: none; }
+    .tile:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+  <h1 class="title">Slay and Spill the Book Media</h1>
+
+  <section class="hero" aria-label="Choose a podcast">
+    <div class="brand">
+      <img class="hero__logo" src="assets/slay-and-spill-logo-wide.jpg" width="1200" height="1000"
+           alt="A glowing purple sword through the word Slay above dark books, and a teacup pouring coffee over an open book beside the words Spill The Book">
+    </div>
+
+    <div class="sites">
+      <a class="tile tile--slay" href="https://bettyandbonnybookslayers.com">
+        <img src="assets/book-slayers-podcast-wide.jpg" width="800" height="640"
+             alt="Book Slayers podcast: a vintage microphone inside a glowing pink ring above the words Book Slayers">
+      </a>
+      <a class="tile tile--spill" href="https://spillthebook.com">
+        <img src="assets/spill-the-book-black.jpg" width="900" height="719"
+             alt="Spill The Book: a teacup pouring coffee over an open book">
+        <span class="tile__label">Podcast</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 Slay and Spill the Book Media. All rights reserved.</p>
+  </footer>
+</main>
+
+</body>
+</html>
